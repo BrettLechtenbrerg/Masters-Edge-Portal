@@ -34,7 +34,7 @@ interface AppCard {
   url: string;
   gradient: string;
   iconBg: string;
-  status: "live" | "coming-soon";
+  status: "live" | "coming-soon" | "in-development";
   tier: "flagship" | "daily-ops" | "tier3" | "advisor";
 }
 
@@ -103,7 +103,7 @@ const apps: AppCard[] = [
     url: "#",
     gradient: "from-orange-600 to-amber-600",
     iconBg: "bg-orange-500/20",
-    status: "coming-soon",
+    status: "in-development",
     tier: "daily-ops",
   },
   {
@@ -288,10 +288,15 @@ function AppCardComponent({ app }: { app: AppCard }) {
           >
             <app.icon className="h-7 w-7 text-white" />
           </div>
-          {isLive ? (
+          {app.status === "live" ? (
             <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/20 px-3 py-1 text-xs font-medium text-emerald-300 border border-emerald-500/30">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
               Live
+            </span>
+          ) : app.status === "in-development" ? (
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-500/20 px-3 py-1 text-xs font-medium text-blue-300 border border-blue-500/30">
+              <span className="h-1.5 w-1.5 rounded-full bg-blue-400 animate-pulse" />
+              In Development
             </span>
           ) : (
             <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-500/20 px-3 py-1 text-xs font-medium text-amber-300 border border-amber-500/30">
