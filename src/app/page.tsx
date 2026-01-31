@@ -122,10 +122,10 @@ const apps: AppCard[] = [
     description:
       "Daily brand consistency checks — ensure signage, messaging, cleanliness standards, and customer-facing materials meet your standards.",
     icon: ShieldCheck,
-    url: "#",
+    url: "https://tsai-brand-sanitation.vercel.app",
     gradient: "from-indigo-600 to-blue-600",
     iconBg: "bg-indigo-500/20",
-    status: "coming-soon",
+    status: "live",
     tier: "daily-ops",
   },
   // Tier 2 Flagship Companion Apps (Build Series)
