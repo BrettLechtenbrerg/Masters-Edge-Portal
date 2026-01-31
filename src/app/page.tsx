@@ -109,12 +109,12 @@ const apps: AppCard[] = [
   {
     name: "Manager's Log",
     description:
-      "Document daily decisions, employee interactions, incidents, and wins. Searchable history that protects you and builds your team.",
+      "Record phone calls, customer interactions, staff notes, incidents, and decisions. Auto-saved, searchable, and exportable — your team's business diary.",
     icon: NotebookPen,
-    url: "#",
+    url: "https://tsai-managers-log.vercel.app",
     gradient: "from-teal-600 to-cyan-600",
     iconBg: "bg-teal-500/20",
-    status: "coming-soon",
+    status: "live",
     tier: "daily-ops",
   },
   {
