@@ -16,6 +16,15 @@ import {
   BrainCircuit,
   Landmark,
   TrendingUp,
+  Clock,
+  UserCheck,
+  CalendarDays,
+  Megaphone,
+  Globe,
+  Share2,
+  ListChecks,
+  NotebookPen,
+  ShieldCheck,
 } from "lucide-react";
 
 interface AppCard {
@@ -26,10 +35,99 @@ interface AppCard {
   gradient: string;
   iconBg: string;
   status: "live" | "coming-soon";
-  tier: "flagship" | "tier3" | "advisor";
+  tier: "flagship" | "daily-ops" | "tier3" | "advisor";
 }
 
 const apps: AppCard[] = [
+  // Daily Operations Apps
+  {
+    name: "Lead Follow Up",
+    description:
+      "Never miss a lead again. Automated follow-up sequences, call reminders, and pipeline tracking to turn prospects into clients.",
+    icon: UserCheck,
+    url: "#",
+    gradient: "from-cyan-600 to-blue-600",
+    iconBg: "bg-cyan-500/20",
+    status: "coming-soon",
+    tier: "daily-ops",
+  },
+  {
+    name: "Calendar / Appointments",
+    description:
+      "Manage your schedule, appointments, and availability. Auto-sync with your booking system and never double-book again.",
+    icon: CalendarDays,
+    url: "#",
+    gradient: "from-blue-600 to-indigo-600",
+    iconBg: "bg-blue-500/20",
+    status: "coming-soon",
+    tier: "daily-ops",
+  },
+  {
+    name: "Daily Marketing",
+    description:
+      "Your daily marketing checklist — content calendar, campaign tracking, ad spend monitoring, and engagement analytics in one view.",
+    icon: Megaphone,
+    url: "#",
+    gradient: "from-pink-600 to-rose-600",
+    iconBg: "bg-pink-500/20",
+    status: "coming-soon",
+    tier: "daily-ops",
+  },
+  {
+    name: "Daily Web / Financials",
+    description:
+      "Track website performance, revenue, expenses, and financial KPIs every day. Spot trends and act fast on opportunities.",
+    icon: Globe,
+    url: "#",
+    gradient: "from-emerald-600 to-green-600",
+    iconBg: "bg-emerald-500/20",
+    status: "coming-soon",
+    tier: "daily-ops",
+  },
+  {
+    name: "Social Media",
+    description:
+      "Plan, schedule, and track social media across all platforms. Monitor engagement, brand mentions, and competitor activity daily.",
+    icon: Share2,
+    url: "#",
+    gradient: "from-violet-600 to-purple-600",
+    iconBg: "bg-violet-500/20",
+    status: "coming-soon",
+    tier: "daily-ops",
+  },
+  {
+    name: "Daily Operations",
+    description:
+      "Your morning command center — team check-ins, task assignments, priority setting, and daily standup summaries all in one place.",
+    icon: ListChecks,
+    url: "#",
+    gradient: "from-orange-600 to-amber-600",
+    iconBg: "bg-orange-500/20",
+    status: "coming-soon",
+    tier: "daily-ops",
+  },
+  {
+    name: "Manager's Log",
+    description:
+      "Document daily decisions, employee interactions, incidents, and wins. Searchable history that protects you and builds your team.",
+    icon: NotebookPen,
+    url: "#",
+    gradient: "from-teal-600 to-cyan-600",
+    iconBg: "bg-teal-500/20",
+    status: "coming-soon",
+    tier: "daily-ops",
+  },
+  {
+    name: "Brand / Sanitation",
+    description:
+      "Daily brand consistency checks — ensure signage, messaging, cleanliness standards, and customer-facing materials meet your standards.",
+    icon: ShieldCheck,
+    url: "#",
+    gradient: "from-indigo-600 to-blue-600",
+    iconBg: "bg-indigo-500/20",
+    status: "coming-soon",
+    tier: "daily-ops",
+  },
   // Tier 2 Flagship Companion Apps (Build Series)
   {
     name: "Brand Book Creator",
@@ -229,6 +327,7 @@ function AppCardComponent({ app }: { app: AppCard }) {
 }
 
 export default function PortalPage() {
+  const dailyOpsApps = apps.filter((a) => a.tier === "daily-ops");
   const flagshipApps = apps.filter((a) => a.tier === "flagship");
   const tier3Apps = apps.filter((a) => a.tier === "tier3");
   const advisorApps = apps.filter((a) => a.tier === "advisor");
@@ -289,8 +388,29 @@ export default function PortalPage() {
         </div>
       </header>
 
-      {/* Flagship Tools Section */}
       <main className="max-w-7xl mx-auto px-6 py-12">
+        {/* Daily Operations Section */}
+        <section className="mb-16">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600">
+              <Clock className="h-5 w-5 text-white" />
+            </div>
+            <div>
+              <h2 className="text-2xl font-bold text-white">Daily Operations</h2>
+              <p className="text-sm text-navy-400">
+                Your daily command center — manage every part of your business from one place
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {dailyOpsApps.map((app) => (
+              <AppCardComponent key={app.name} app={app} />
+            ))}
+          </div>
+        </section>
+
+        {/* Flagship Tools Section */}
         <section className="mb-16">
           <div className="flex items-center gap-3 mb-8">
             <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600">
