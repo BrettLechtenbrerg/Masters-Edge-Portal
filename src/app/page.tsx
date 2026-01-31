@@ -54,12 +54,12 @@ const apps: AppCard[] = [
   {
     name: "Calendar / Appointments",
     description:
-      "Manage your schedule, appointments, and availability. Auto-sync with your booking system and never double-book again.",
+      "One-click access to your Google Calendar. View your schedule, add appointments, and manage your day — all from the portal.",
     icon: CalendarDays,
-    url: "#",
+    url: "https://tsai-calendar.vercel.app",
     gradient: "from-blue-600 to-indigo-600",
     iconBg: "bg-blue-500/20",
-    status: "coming-soon",
+    status: "live",
     tier: "daily-ops",
   },
   {
