@@ -154,12 +154,12 @@ const apps: AppCard[] = [
   {
     name: "Delegation Engine",
     description:
-      "Identify which tasks to delegate, who to delegate them to, and build accountability systems that scale your operations.",
+      "Audit your time, calculate your true hourly worth, and build delegation plans that free you to focus on high-impact work.",
     icon: ClipboardList,
-    url: "#",
+    url: "https://delegation-engine.vercel.app",
     gradient: "from-amber-600 to-orange-600",
     iconBg: "bg-amber-500/20",
-    status: "coming-soon",
+    status: "live",
     tier: "flagship",
   },
   {
