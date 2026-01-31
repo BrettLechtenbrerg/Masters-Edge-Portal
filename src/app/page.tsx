@@ -65,12 +65,12 @@ const apps: AppCard[] = [
   {
     name: "Daily Marketing",
     description:
-      "Your daily marketing checklist — content calendar, campaign tracking, ad spend monitoring, and engagement analytics in one view.",
+      "Monthly marketing plan with activity tracking, lead goals, needs checklist, strategy notes, and print support.",
     icon: Megaphone,
-    url: "#",
+    url: "https://tsai-daily-marketing.vercel.app",
     gradient: "from-pink-600 to-rose-600",
     iconBg: "bg-pink-500/20",
-    status: "coming-soon",
+    status: "live",
     tier: "daily-ops",
   },
   {
