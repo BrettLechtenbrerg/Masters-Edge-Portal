@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   Palette,
   DollarSign,
@@ -244,13 +245,29 @@ export default function PortalPage() {
 
         <div className="relative max-w-7xl mx-auto px-6 py-16 sm:py-20 text-center">
           {/* TSAI Badge */}
-          <div className="inline-flex items-center gap-2 rounded-full bg-white/5 border border-white/10 px-4 py-2 mb-8 backdrop-blur-sm">
-            <div className="flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-br from-blue-400 to-blue-600">
-              <Zap className="h-3.5 w-3.5 text-white" />
-            </div>
+          <div className="inline-flex items-center gap-3 rounded-full bg-white/5 border border-white/10 px-5 py-2.5 mb-8 backdrop-blur-sm">
+            <Image
+              src="/tsai-logo.png"
+              alt="Total Success AI"
+              width={28}
+              height={28}
+              className="rounded-full"
+            />
             <span className="text-sm text-navy-200 font-medium">
               Powered by Total Success AI
             </span>
+          </div>
+
+          {/* Logo */}
+          <div className="flex justify-center mb-6">
+            <Image
+              src="/tsai-logo.png"
+              alt="Total Success AI Logo"
+              width={120}
+              height={115}
+              className="drop-shadow-[0_0_30px_rgba(59,111,219,0.3)]"
+              priority
+            />
           </div>
 
           {/* Title */}
@@ -342,9 +359,13 @@ export default function PortalPage() {
         <div className="max-w-7xl mx-auto px-6 py-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-400 to-blue-600">
-                <Zap className="h-4 w-4 text-white" />
-              </div>
+              <Image
+                src="/tsai-logo.png"
+                alt="Total Success AI"
+                width={36}
+                height={34}
+                className="rounded-md"
+              />
               <div>
                 <p className="text-sm font-semibold text-white">Total Success AI</p>
                 <p className="text-xs text-navy-400">
