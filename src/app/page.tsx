@@ -43,12 +43,12 @@ const apps: AppCard[] = [
   {
     name: "Lead Follow Up",
     description:
-      "Never miss a lead again. Automated follow-up sequences, call reminders, and pipeline tracking to turn prospects into clients.",
+      "One-click access to your Go High Level Opportunities pipeline. Track leads, manage follow-ups, and never miss a prospect again.",
     icon: UserCheck,
-    url: "#",
+    url: "https://tsai-lead-follow-up.vercel.app",
     gradient: "from-cyan-600 to-blue-600",
     iconBg: "bg-cyan-500/20",
-    status: "coming-soon",
+    status: "live",
     tier: "daily-ops",
   },
   {
