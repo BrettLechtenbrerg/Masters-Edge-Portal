@@ -12,6 +12,9 @@ import {
   ArrowRight,
   Zap,
   ExternalLink,
+  BrainCircuit,
+  Landmark,
+  TrendingUp,
 } from "lucide-react";
 
 interface AppCard {
@@ -22,7 +25,7 @@ interface AppCard {
   gradient: string;
   iconBg: string;
   status: "live" | "coming-soon";
-  tier: "flagship" | "tier3";
+  tier: "flagship" | "tier3" | "advisor";
 }
 
 const apps: AppCard[] = [
@@ -138,6 +141,29 @@ const apps: AppCard[] = [
     status: "live",
     tier: "tier3",
   },
+  // AI Board of Advisors
+  {
+    name: "Business Board of Advisors",
+    description:
+      "Chat with AI versions of Alex Hormozi, Mark Cuban, Gary Vee, Walt Disney, Charlie Munger, and Socrates. Get business advice from the greatest minds.",
+    icon: Landmark,
+    url: "https://business-board-web.vercel.app",
+    gradient: "from-amber-500 to-yellow-600",
+    iconBg: "bg-amber-500/20",
+    status: "live",
+    tier: "advisor",
+  },
+  {
+    name: "Investment Board of Advisors",
+    description:
+      "Get investment wisdom from 9 legendary investors: Warren Buffett, Peter Lynch, Ray Dalio, John Bogle, Benjamin Graham, George Soros, Howard Marks, Carl Icahn, and Cathie Wood.",
+    icon: TrendingUp,
+    url: "https://investment-board-web.vercel.app",
+    gradient: "from-emerald-500 to-green-600",
+    iconBg: "bg-emerald-500/20",
+    status: "live",
+    tier: "advisor",
+  },
 ];
 
 function AppCardComponent({ app }: { app: AppCard }) {
@@ -204,6 +230,7 @@ function AppCardComponent({ app }: { app: AppCard }) {
 export default function PortalPage() {
   const flagshipApps = apps.filter((a) => a.tier === "flagship");
   const tier3Apps = apps.filter((a) => a.tier === "tier3");
+  const advisorApps = apps.filter((a) => a.tier === "advisor");
 
   return (
     <div className="min-h-screen">
@@ -283,6 +310,27 @@ export default function PortalPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {tier3Apps.map((app) => (
+              <AppCardComponent key={app.name} app={app} />
+            ))}
+          </div>
+        </section>
+
+        {/* AI Board of Advisors Section */}
+        <section className="mb-16">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-amber-500 to-yellow-600">
+              <BrainCircuit className="h-5 w-5 text-white" />
+            </div>
+            <div>
+              <h2 className="text-2xl font-bold text-white">AI Board of Advisors</h2>
+              <p className="text-sm text-navy-400">
+                Get advice from AI versions of the world&apos;s greatest business and investment minds
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {advisorApps.map((app) => (
               <AppCardComponent key={app.name} app={app} />
             ))}
           </div>
