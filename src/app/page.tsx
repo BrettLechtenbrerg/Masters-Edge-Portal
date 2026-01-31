@@ -87,12 +87,12 @@ const apps: AppCard[] = [
   {
     name: "Social Media",
     description:
-      "Plan, schedule, and track social media across all platforms. Monitor engagement, brand mentions, and competitor activity daily.",
+      "Quick-launch to your social platforms. Post to your Facebook Page, Group, and Go High Level communities in one click.",
     icon: Share2,
-    url: "#",
+    url: "https://tsai-social-media.vercel.app",
     gradient: "from-violet-600 to-purple-600",
     iconBg: "bg-violet-500/20",
-    status: "coming-soon",
+    status: "live",
     tier: "daily-ops",
   },
   {
