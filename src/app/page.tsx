@@ -76,12 +76,12 @@ const apps: AppCard[] = [
   {
     name: "Daily Web / Financials",
     description:
-      "Track website performance, revenue, expenses, and financial KPIs every day. Spot trends and act fast on opportunities.",
+      "Set rolling 3-day revenue goals across all income streams. Goals we set are goals we get.",
     icon: Globe,
-    url: "#",
+    url: "https://tsai-daily-web-financials.vercel.app",
     gradient: "from-emerald-600 to-green-600",
     iconBg: "bg-emerald-500/20",
-    status: "coming-soon",
+    status: "live",
     tier: "daily-ops",
   },
   {
