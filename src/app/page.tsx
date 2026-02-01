@@ -415,6 +415,27 @@ export default function PortalPage() {
           </div>
         </section>
 
+        {/* AI Board of Advisors Section */}
+        <section className="mb-16">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-amber-500 to-yellow-600">
+              <BrainCircuit className="h-5 w-5 text-white" />
+            </div>
+            <div>
+              <h2 className="text-2xl font-bold text-white">AI Board of Advisors</h2>
+              <p className="text-sm text-navy-400">
+                Get advice from AI versions of the world&apos;s greatest business and investment minds
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {advisorApps.map((app) => (
+              <AppCardComponent key={app.name} app={app} />
+            ))}
+          </div>
+        </section>
+
         {/* Flagship Tools Section */}
         <section className="mb-16">
           <div className="flex items-center gap-3 mb-8">
@@ -452,27 +473,6 @@ export default function PortalPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {tier3Apps.map((app) => (
-              <AppCardComponent key={app.name} app={app} />
-            ))}
-          </div>
-        </section>
-
-        {/* AI Board of Advisors Section */}
-        <section className="mb-16">
-          <div className="flex items-center gap-3 mb-8">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-amber-500 to-yellow-600">
-              <BrainCircuit className="h-5 w-5 text-white" />
-            </div>
-            <div>
-              <h2 className="text-2xl font-bold text-white">AI Board of Advisors</h2>
-              <p className="text-sm text-navy-400">
-                Get advice from AI versions of the world&apos;s greatest business and investment minds
-              </p>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {advisorApps.map((app) => (
               <AppCardComponent key={app.name} app={app} />
             ))}
           </div>
