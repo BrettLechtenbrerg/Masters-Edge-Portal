@@ -26,6 +26,7 @@ import {
   Cpu,
   NotebookPen,
   ShieldCheck,
+  Calculator,
 } from "lucide-react";
 
 interface AppCard {
@@ -97,14 +98,14 @@ const apps: AppCard[] = [
     tier: "daily-ops",
   },
   {
-    name: "AI Tools",
+    name: "Bonus/Profit Calculator",
     description:
-      "Quick-launch your AI platforms — Claude, ChatGPT, Gemini, and Canva. One click to open any tool in a new tab.",
-    icon: Cpu,
-    url: "https://tsai-ai-tools.vercel.app",
+      "Calculate team bonuses, profit margins, and commission structures. Know your numbers before you commit.",
+    icon: Calculator,
+    url: "#",
     gradient: "from-orange-600 to-amber-600",
     iconBg: "bg-orange-500/20",
-    status: "live",
+    status: "coming-soon",
     tier: "daily-ops",
   },
   {
@@ -241,7 +242,18 @@ const apps: AppCard[] = [
     status: "live",
     tier: "tier3",
   },
-  // AI Board of Advisors
+  // AI Tools and Strategy
+  {
+    name: "AI Tools",
+    description:
+      "Quick-launch your AI platforms — Claude, ChatGPT, Gemini, and Canva. One click to open any tool in a new tab.",
+    icon: Cpu,
+    url: "https://tsai-ai-tools.vercel.app",
+    gradient: "from-orange-600 to-amber-600",
+    iconBg: "bg-orange-500/20",
+    status: "live",
+    tier: "advisor",
+  },
   {
     name: "Business Board of Advisors",
     description:
@@ -423,14 +435,14 @@ export default function PortalPage() {
               <BrainCircuit className="h-5 w-5 text-white" />
             </div>
             <div>
-              <h2 className="text-2xl font-bold text-white">AI Board of Advisors</h2>
+              <h2 className="text-2xl font-bold text-white">AI Tools and Strategy</h2>
               <p className="text-sm text-navy-400">
-                Get advice from AI versions of the world&apos;s greatest business and investment minds
+                AI platforms and advisory boards from the world&apos;s greatest business and investment minds
               </p>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {advisorApps.map((app) => (
               <AppCardComponent key={app.name} app={app} />
             ))}
