@@ -168,10 +168,10 @@ const apps: AppCard[] = [
     description:
       "Create standardized operating procedures that maintain your brand voice. The central hub connecting all your business systems.",
     icon: FileText,
-    url: "#",
-    gradient: "from-sky-600 to-cyan-600",
-    iconBg: "bg-sky-500/20",
-    status: "coming-soon",
+    url: "https://tsai-sop-factory.vercel.app",
+    gradient: "from-blue-600 to-sky-600",
+    iconBg: "bg-blue-500/20",
+    status: "live",
     tier: "flagship",
   },
   {
@@ -179,10 +179,10 @@ const apps: AppCard[] = [
     description:
       "AI-powered hiring system using your brand values and financial data to find, evaluate, and onboard the right team members.",
     icon: Users,
-    url: "#",
-    gradient: "from-rose-600 to-pink-600",
-    iconBg: "bg-rose-500/20",
-    status: "coming-soon",
+    url: "https://tsai-hiring-oracle.vercel.app",
+    gradient: "from-teal-600 to-cyan-600",
+    iconBg: "bg-teal-500/20",
+    status: "live",
     tier: "flagship",
   },
   {
@@ -190,10 +190,10 @@ const apps: AppCard[] = [
     description:
       "Navigate tough workplace conversations with confidence. Roleplay scenarios, scripts, and frameworks aligned with your values.",
     icon: MessageSquare,
-    url: "#",
-    gradient: "from-purple-600 to-fuchsia-600",
-    iconBg: "bg-purple-500/20",
-    status: "coming-soon",
+    url: "https://tsai-difficult-conversations.vercel.app",
+    gradient: "from-rose-600 to-pink-600",
+    iconBg: "bg-rose-500/20",
+    status: "live",
     tier: "flagship",
   },
   // Tier 3 Apps (Already Built)
