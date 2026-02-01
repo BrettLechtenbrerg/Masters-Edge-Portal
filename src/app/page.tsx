@@ -100,12 +100,12 @@ const apps: AppCard[] = [
   {
     name: "Bonus/Profit Calculator",
     description:
-      "Calculate team bonuses, profit margins, and commission structures. Know your numbers before you commit.",
+      "Track daily cash intake and expenses with running totals. See your monthly profit or loss at a glance. Export and print your reports.",
     icon: Calculator,
-    url: "#",
-    gradient: "from-orange-600 to-amber-600",
-    iconBg: "bg-orange-500/20",
-    status: "coming-soon",
+    url: "https://tsai-bonus-calculator.vercel.app",
+    gradient: "from-amber-500 to-orange-600",
+    iconBg: "bg-amber-500/20",
+    status: "live",
     tier: "daily-ops",
   },
   {
