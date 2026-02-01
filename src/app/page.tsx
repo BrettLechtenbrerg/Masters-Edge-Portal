@@ -87,9 +87,9 @@ const apps: AppCard[] = [
     tier: "daily-ops",
   },
   {
-    name: "Social Media",
+    name: "Social Media & SEO",
     description:
-      "Quick-launch to your social platforms. Post to your Facebook Page, Group, and Go High Level communities in one click.",
+      "Post to your social platforms and track SEO performance. Google Analytics, Search Console, blog posts, and all your social channels in one place.",
     icon: Share2,
     url: "https://tsai-social-media.vercel.app",
     gradient: "from-violet-600 to-purple-600",
