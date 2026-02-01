@@ -23,6 +23,7 @@ import {
   Globe,
   Share2,
   ListChecks,
+  Cpu,
   NotebookPen,
   ShieldCheck,
 } from "lucide-react";
@@ -96,14 +97,14 @@ const apps: AppCard[] = [
     tier: "daily-ops",
   },
   {
-    name: "Daily Operations",
+    name: "AI Tools",
     description:
-      "Your morning command center — team check-ins, task assignments, priority setting, and daily standup summaries all in one place.",
-    icon: ListChecks,
-    url: "#",
+      "Quick-launch your AI platforms — Claude, ChatGPT, Gemini, and Canva. One click to open any tool in a new tab.",
+    icon: Cpu,
+    url: "https://tsai-ai-tools.vercel.app",
     gradient: "from-orange-600 to-amber-600",
     iconBg: "bg-orange-500/20",
-    status: "in-development",
+    status: "live",
     tier: "daily-ops",
   },
   {
