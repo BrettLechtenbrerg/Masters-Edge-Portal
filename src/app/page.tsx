@@ -244,6 +244,17 @@ const apps: AppCard[] = [
   },
   // AI Tools and Strategy
   {
+    name: "Attendance Tracker",
+    description:
+      "QR code scanning and manual check-in for students. Track attendance, manage classes, monitor promotion cycles, and generate reports.",
+    icon: ListChecks,
+    url: "https://pmma-ultimate-attendance-tracker.vercel.app",
+    gradient: "from-sky-500 to-blue-600",
+    iconBg: "bg-sky-500/20",
+    status: "live",
+    tier: "advisor",
+  },
+  {
     name: "AI Tools",
     description:
       "Quick-launch your AI platforms — Claude, ChatGPT, Gemini, and Canva. One click to open any tool in a new tab.",
@@ -273,17 +284,6 @@ const apps: AppCard[] = [
     url: "https://investment-board-web.vercel.app",
     gradient: "from-emerald-500 to-green-600",
     iconBg: "bg-emerald-500/20",
-    status: "live",
-    tier: "advisor",
-  },
-  {
-    name: "Attendance Tracker",
-    description:
-      "QR code scanning and manual check-in for students. Track attendance, manage classes, monitor promotion cycles, and generate reports.",
-    icon: ListChecks,
-    url: "https://pmma-ultimate-attendance-tracker.vercel.app",
-    gradient: "from-sky-500 to-blue-600",
-    iconBg: "bg-sky-500/20",
     status: "live",
     tier: "advisor",
   },
