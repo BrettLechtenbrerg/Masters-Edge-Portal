@@ -276,6 +276,17 @@ const apps: AppCard[] = [
     status: "live",
     tier: "advisor",
   },
+  {
+    name: "Attendance Tracker",
+    description:
+      "QR code scanning and manual check-in for students. Track attendance, manage classes, monitor promotion cycles, and generate reports.",
+    icon: ListChecks,
+    url: "https://pmma-ultimate-attendance-tracker.vercel.app",
+    gradient: "from-sky-500 to-blue-600",
+    iconBg: "bg-sky-500/20",
+    status: "live",
+    tier: "advisor",
+  },
 ];
 
 function AppCardComponent({ app }: { app: AppCard }) {
@@ -442,7 +453,7 @@ export default function PortalPage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {advisorApps.map((app) => (
               <AppCardComponent key={app.name} app={app} />
             ))}
