@@ -1,3 +1,6 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import {
   Palette,
@@ -27,7 +30,16 @@ import {
   NotebookPen,
   ShieldCheck,
   Calculator,
+  Lock,
+  LogOut,
 } from "lucide-react";
+
+// ============================================
+// TEAM LOGIN CREDENTIALS - Change these as needed
+// ============================================
+const TEAM_USERNAME = "team";
+const TEAM_PASSWORD = "masters2026";
+// ============================================
 
 interface AppCard {
   name: string;
@@ -355,7 +367,175 @@ function AppCardComponent({ app }: { app: AppCard }) {
   );
 }
 
+// ============================================
+// LOGIN SCREEN COMPONENT
+// ============================================
+function LoginScreen({ onLogin }: { onLogin: () => void }) {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setError("");
+    setIsLoading(true);
+
+    // Simulate brief loading for UX
+    setTimeout(() => {
+      if (username === TEAM_USERNAME && password === TEAM_PASSWORD) {
+        localStorage.setItem("me_portal_auth", "true");
+        onLogin();
+      } else {
+        setError("Invalid username or password");
+        setIsLoading(false);
+      }
+    }, 500);
+  };
+
+  return (
+    <div className="min-h-screen flex items-center justify-center px-4">
+      {/* Background glow */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-blue-600/15 rounded-full blur-[120px] glow-pulse" />
+        <div className="absolute top-0 right-0 w-[400px] h-[300px] bg-indigo-600/10 rounded-full blur-[100px]" />
+      </div>
+
+      <div className="relative w-full max-w-md">
+        {/* Login Card */}
+        <div className="rounded-2xl border border-white/10 bg-navy-900/90 backdrop-blur-xl shadow-2xl overflow-hidden">
+          {/* Gradient top bar */}
+          <div className="h-1.5 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500" />
+
+          <div className="p-8">
+            {/* Logo & Title */}
+            <div className="text-center mb-8">
+              <div className="flex justify-center mb-4">
+                <Image
+                  src="/tsai-logo.png"
+                  alt="Total Success AI Logo"
+                  width={80}
+                  height={77}
+                  className="drop-shadow-[0_0_20px_rgba(59,111,219,0.3)]"
+                  priority
+                />
+              </div>
+              <h1 className="text-2xl font-bold text-white mb-2">
+                Master&apos;s Edge Portal
+              </h1>
+              <p className="text-sm text-navy-400">
+                Enter your team credentials to continue
+              </p>
+            </div>
+
+            {/* Login Form */}
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div>
+                <label htmlFor="username" className="block text-sm font-medium text-navy-300 mb-2">
+                  Username
+                </label>
+                <input
+                  type="text"
+                  id="username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  className="w-full px-4 py-3 rounded-xl bg-navy-800/50 border border-white/10 text-white placeholder-navy-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all"
+                  placeholder="Enter username"
+                  required
+                  autoComplete="username"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="password" className="block text-sm font-medium text-navy-300 mb-2">
+                  Password
+                </label>
+                <input
+                  type="password"
+                  id="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="w-full px-4 py-3 rounded-xl bg-navy-800/50 border border-white/10 text-white placeholder-navy-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all"
+                  placeholder="Enter password"
+                  required
+                  autoComplete="current-password"
+                />
+              </div>
+
+              {error && (
+                <div className="flex items-center gap-2 text-sm text-red-400 bg-red-500/10 border border-red-500/20 rounded-lg px-4 py-3">
+                  <Lock className="h-4 w-4 flex-shrink-0" />
+                  {error}
+                </div>
+              )}
+
+              <button
+                type="submit"
+                disabled={isLoading}
+                className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold hover:from-blue-500 hover:to-indigo-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2"
+              >
+                {isLoading ? (
+                  <>
+                    <div className="h-5 w-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    Signing in...
+                  </>
+                ) : (
+                  <>
+                    <Lock className="h-4 w-4" />
+                    Sign In
+                  </>
+                )}
+              </button>
+            </form>
+
+            {/* Footer */}
+            <div className="mt-8 pt-6 border-t border-white/10 text-center">
+              <p className="text-xs text-navy-500">
+                Powered by Total Success AI
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ============================================
+// MAIN PORTAL COMPONENT
+// ============================================
 export default function PortalPage() {
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+
+  // Check auth status on mount
+  useEffect(() => {
+    const authStatus = localStorage.getItem("me_portal_auth");
+    setIsAuthenticated(authStatus === "true");
+  }, []);
+
+  const handleLogin = () => {
+    setIsAuthenticated(true);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("me_portal_auth");
+    setIsAuthenticated(false);
+  };
+
+  // Show nothing while checking auth (prevents flash)
+  if (isAuthenticated === null) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="h-8 w-8 border-2 border-blue-500/30 border-t-blue-500 rounded-full animate-spin" />
+      </div>
+    );
+  }
+
+  // Show login screen if not authenticated
+  if (!isAuthenticated) {
+    return <LoginScreen onLogin={handleLogin} />;
+  }
+
   const dailyOpsApps = apps.filter((a) => a.tier === "daily-ops");
   const flagshipApps = apps.filter((a) => a.tier === "flagship");
   const tier3Apps = apps.filter((a) => a.tier === "tier3");
@@ -373,6 +553,17 @@ export default function PortalPage() {
 
         <div className="relative max-w-7xl mx-auto px-6 py-16 sm:py-20 text-center">
           {/* TSAI Badge */}
+          {/* Logout Button - Top Right */}
+          <div className="absolute top-4 right-4 sm:top-6 sm:right-6">
+            <button
+              onClick={handleLogout}
+              className="inline-flex items-center gap-2 rounded-full bg-white/5 border border-white/10 px-4 py-2 text-sm text-navy-300 hover:bg-white/10 hover:text-white transition-all"
+            >
+              <LogOut className="h-4 w-4" />
+              <span className="hidden sm:inline">Sign Out</span>
+            </button>
+          </div>
+
           <div className="inline-flex items-center gap-3 rounded-full bg-white/5 border border-white/10 px-5 py-2.5 mb-8 backdrop-blur-sm">
             <Image
               src="/tsai-logo.png"
