@@ -33,13 +33,7 @@ import {
   Lock,
   LogOut,
 } from "lucide-react";
-
-// ============================================
-// TEAM LOGIN CREDENTIALS - Change these as needed
-// ============================================
-const TEAM_USERNAME = "team";
-const TEAM_PASSWORD = "masters2026";
-// ============================================
+import { portalConfig } from "../portal.config";
 
 interface AppCard {
   name: string;
@@ -50,9 +44,10 @@ interface AppCard {
   iconBg: string;
   status: "live" | "coming-soon" | "in-development";
   tier: "flagship" | "daily-ops" | "tier3" | "advisor";
+  configKey: keyof typeof portalConfig.apps;
 }
 
-const apps: AppCard[] = [
+const allApps: AppCard[] = [
   // Daily Operations Apps
   {
     name: "Lead Follow Up",
@@ -64,6 +59,7 @@ const apps: AppCard[] = [
     iconBg: "bg-cyan-500/20",
     status: "live",
     tier: "daily-ops",
+    configKey: "leadFollowUp",
   },
   {
     name: "Calendar / Appointments",
@@ -75,6 +71,7 @@ const apps: AppCard[] = [
     iconBg: "bg-blue-500/20",
     status: "live",
     tier: "daily-ops",
+    configKey: "calendar",
   },
   {
     name: "Daily Marketing",
@@ -86,6 +83,7 @@ const apps: AppCard[] = [
     iconBg: "bg-pink-500/20",
     status: "live",
     tier: "daily-ops",
+    configKey: "dailyMarketing",
   },
   {
     name: "Daily Web / Financials",
@@ -97,6 +95,7 @@ const apps: AppCard[] = [
     iconBg: "bg-emerald-500/20",
     status: "live",
     tier: "daily-ops",
+    configKey: "dailyWebFinancials",
   },
   {
     name: "Social Media & SEO",
@@ -108,6 +107,7 @@ const apps: AppCard[] = [
     iconBg: "bg-violet-500/20",
     status: "live",
     tier: "daily-ops",
+    configKey: "socialMedia",
   },
   {
     name: "Bonus/Profit Calculator",
@@ -119,6 +119,7 @@ const apps: AppCard[] = [
     iconBg: "bg-amber-500/20",
     status: "live",
     tier: "daily-ops",
+    configKey: "bonusCalculator",
   },
   {
     name: "Manager's Log",
@@ -130,6 +131,7 @@ const apps: AppCard[] = [
     iconBg: "bg-teal-500/20",
     status: "live",
     tier: "daily-ops",
+    configKey: "managersLog",
   },
   {
     name: "Brand / Sanitation",
@@ -141,6 +143,7 @@ const apps: AppCard[] = [
     iconBg: "bg-indigo-500/20",
     status: "live",
     tier: "daily-ops",
+    configKey: "brandSanitation",
   },
   // Tier 2 Flagship Companion Apps (Build Series)
   {
@@ -153,6 +156,7 @@ const apps: AppCard[] = [
     iconBg: "bg-violet-500/20",
     status: "live",
     tier: "flagship",
+    configKey: "brandBookCreator",
   },
   {
     name: "P&L Creation System",
@@ -164,6 +168,7 @@ const apps: AppCard[] = [
     iconBg: "bg-emerald-500/20",
     status: "live",
     tier: "flagship",
+    configKey: "pAndLCreation",
   },
   {
     name: "Delegation Engine",
@@ -175,6 +180,7 @@ const apps: AppCard[] = [
     iconBg: "bg-amber-500/20",
     status: "live",
     tier: "flagship",
+    configKey: "delegationEngine",
   },
   {
     name: "SOP Factory",
@@ -186,6 +192,7 @@ const apps: AppCard[] = [
     iconBg: "bg-blue-500/20",
     status: "live",
     tier: "flagship",
+    configKey: "sopFactory",
   },
   {
     name: "Hiring Oracle",
@@ -197,6 +204,7 @@ const apps: AppCard[] = [
     iconBg: "bg-teal-500/20",
     status: "live",
     tier: "flagship",
+    configKey: "hiringOracle",
   },
   {
     name: "Difficult Conversations Coach",
@@ -208,6 +216,7 @@ const apps: AppCard[] = [
     iconBg: "bg-rose-500/20",
     status: "live",
     tier: "flagship",
+    configKey: "difficultConversations",
   },
   // Tier 3 Apps (Already Built)
   {
@@ -220,6 +229,7 @@ const apps: AppCard[] = [
     iconBg: "bg-blue-500/20",
     status: "live",
     tier: "tier3",
+    configKey: "ceoDashboard",
   },
   {
     name: "Performance Review Pro",
@@ -231,6 +241,7 @@ const apps: AppCard[] = [
     iconBg: "bg-teal-500/20",
     status: "live",
     tier: "tier3",
+    configKey: "performanceReviewPro",
   },
   {
     name: "Competitor Intel",
@@ -242,6 +253,7 @@ const apps: AppCard[] = [
     iconBg: "bg-orange-500/20",
     status: "live",
     tier: "tier3",
+    configKey: "competitorIntel",
   },
   {
     name: "Refferq Referral Engine",
@@ -253,6 +265,7 @@ const apps: AppCard[] = [
     iconBg: "bg-yellow-500/20",
     status: "live",
     tier: "tier3",
+    configKey: "refferqReferral",
   },
   // AI Tools and Strategy
   {
@@ -265,6 +278,7 @@ const apps: AppCard[] = [
     iconBg: "bg-sky-500/20",
     status: "live",
     tier: "advisor",
+    configKey: "attendanceTracker",
   },
   {
     name: "AI Tools",
@@ -276,6 +290,7 @@ const apps: AppCard[] = [
     iconBg: "bg-orange-500/20",
     status: "live",
     tier: "advisor",
+    configKey: "aiTools",
   },
   {
     name: "Business Board of Advisors",
@@ -287,6 +302,7 @@ const apps: AppCard[] = [
     iconBg: "bg-amber-500/20",
     status: "live",
     tier: "advisor",
+    configKey: "businessBoardAdvisors",
   },
   {
     name: "Investment Board of Advisors",
@@ -298,8 +314,12 @@ const apps: AppCard[] = [
     iconBg: "bg-emerald-500/20",
     status: "live",
     tier: "advisor",
+    configKey: "investmentBoardAdvisors",
   },
 ];
+
+// Filter apps based on portal config
+const apps = allApps.filter((app) => portalConfig.apps[app.configKey] !== false);
 
 function AppCardComponent({ app }: { app: AppCard }) {
   const isLive = app.status === "live";
@@ -383,8 +403,8 @@ function LoginScreen({ onLogin }: { onLogin: () => void }) {
 
     // Simulate brief loading for UX
     setTimeout(() => {
-      if (username === TEAM_USERNAME && password === TEAM_PASSWORD) {
-        localStorage.setItem("me_portal_auth", "true");
+      if (username === portalConfig.auth.username && password === portalConfig.auth.password) {
+        localStorage.setItem(portalConfig.auth.storageKey, "true");
         onLogin();
       } else {
         setError("Invalid username or password");
@@ -405,15 +425,15 @@ function LoginScreen({ onLogin }: { onLogin: () => void }) {
         {/* Login Card */}
         <div className="rounded-2xl border border-white/10 bg-navy-900/90 backdrop-blur-xl shadow-2xl overflow-hidden">
           {/* Gradient top bar */}
-          <div className="h-1.5 bg-gradient-to-r from-blue-500 via-indigo-500 to-purple-500" />
+          <div className={`h-1.5 bg-gradient-to-r ${portalConfig.theme.primaryGradient}`} />
 
           <div className="p-8">
             {/* Logo & Title */}
             <div className="text-center mb-8">
               <div className="flex justify-center mb-4">
                 <Image
-                  src="/tsai-logo.png"
-                  alt="Total Success AI Logo"
+                  src={portalConfig.logoPath}
+                  alt={portalConfig.logoAlt}
                   width={80}
                   height={77}
                   className="drop-shadow-[0_0_20px_rgba(59,111,219,0.3)]"
@@ -421,7 +441,7 @@ function LoginScreen({ onLogin }: { onLogin: () => void }) {
                 />
               </div>
               <h1 className="text-2xl font-bold text-white mb-2">
-                Master&apos;s Edge Portal
+                {portalConfig.portalTitle}
               </h1>
               <p className="text-sm text-navy-400">
                 Enter your team credentials to continue
@@ -491,7 +511,7 @@ function LoginScreen({ onLogin }: { onLogin: () => void }) {
             {/* Footer */}
             <div className="mt-8 pt-6 border-t border-white/10 text-center">
               <p className="text-xs text-navy-500">
-                Powered by Total Success AI
+                {portalConfig.footerTagline}
               </p>
             </div>
           </div>
@@ -509,7 +529,7 @@ export default function PortalPage() {
 
   // Check auth status on mount
   useEffect(() => {
-    const authStatus = localStorage.getItem("me_portal_auth");
+    const authStatus = localStorage.getItem(portalConfig.auth.storageKey);
     setIsAuthenticated(authStatus === "true");
   }, []);
 
@@ -518,7 +538,7 @@ export default function PortalPage() {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("me_portal_auth");
+    localStorage.removeItem(portalConfig.auth.storageKey);
     setIsAuthenticated(false);
   };
 
@@ -566,22 +586,22 @@ export default function PortalPage() {
 
           <div className="inline-flex items-center gap-3 rounded-full bg-white/5 border border-white/10 px-5 py-2.5 mb-8 backdrop-blur-sm">
             <Image
-              src="/tsai-logo.png"
-              alt="Total Success AI"
+              src={portalConfig.logoPath}
+              alt={portalConfig.logoAlt}
               width={28}
               height={28}
               className="rounded-full"
             />
             <span className="text-sm text-navy-200 font-medium">
-              Powered by Total Success AI
+              {portalConfig.footerTagline}
             </span>
           </div>
 
           {/* Logo */}
           <div className="flex justify-center mb-6">
             <Image
-              src="/tsai-logo.png"
-              alt="Total Success AI Logo"
+              src={portalConfig.logoPath}
+              alt={portalConfig.logoAlt}
               width={120}
               height={115}
               className="drop-shadow-[0_0_30px_rgba(59,111,219,0.3)]"
@@ -591,7 +611,7 @@ export default function PortalPage() {
 
           {/* Title */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-4">
-            <span className="text-white">Master&apos;s Edge</span>
+            <span className="text-white">{portalConfig.businessName}</span>
             <br />
             <span className="bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">
               Power Portal
@@ -599,11 +619,10 @@ export default function PortalPage() {
           </h1>
 
           <p className="max-w-2xl mx-auto text-lg text-navy-300 leading-relaxed mb-2">
-            Your all-in-one toolkit for building, growing, and scaling your business.
-            Click any tool below to get started.
+            {portalConfig.tagline}
           </p>
           <p className="text-sm text-navy-400">
-            People-Centered AI Solutions for the Real World
+            {portalConfig.subtitle}
           </p>
         </div>
       </header>
@@ -700,21 +719,21 @@ export default function PortalPage() {
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3">
               <Image
-                src="/tsai-logo.png"
-                alt="Total Success AI"
+                src={portalConfig.logoPath}
+                alt={portalConfig.logoAlt}
                 width={36}
                 height={34}
                 className="rounded-md"
               />
               <div>
-                <p className="text-sm font-semibold text-white">Total Success AI</p>
+                <p className="text-sm font-semibold text-white">{portalConfig.footerCompany}</p>
                 <p className="text-xs text-navy-400">
-                  The Master&apos;s Edge Business Program
+                  {portalConfig.footerTagline}
                 </p>
               </div>
             </div>
             <p className="text-xs text-navy-500">
-              &copy; {new Date().getFullYear()} Total Success AI. All rights reserved.
+              &copy; {new Date().getFullYear()} {portalConfig.footerCompany}. All rights reserved.
             </p>
           </div>
         </div>
