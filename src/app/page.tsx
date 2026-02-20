@@ -36,6 +36,7 @@ import {
   Settings,
   MonitorSmartphone,
   CreditCard,
+  Wallet,
 } from "lucide-react";
 import { portalConfig } from "../portal.config";
 
@@ -173,6 +174,18 @@ const allApps: AppCard[] = [
     status: "coming-soon",
     tier: "daily-ops",
     configKey: "memberSolutionsBilling",
+  },
+  {
+    name: "Stripe Payments",
+    description:
+      "Access your Stripe dashboard. Take credit card payments, create payment links, manage subscriptions, and view transaction history.",
+    icon: Wallet,
+    url: "https://dashboard.stripe.com/acct_1QPwJHLeqtt74TBO/dashboard",
+    gradient: "from-purple-600 to-indigo-600",
+    iconBg: "bg-purple-500/20",
+    status: "live",
+    tier: "daily-ops",
+    configKey: "stripePayments",
   },
   // Tier 2 Flagship Companion Apps (Build Series)
   {

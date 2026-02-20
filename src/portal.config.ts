@@ -66,6 +66,7 @@ export const portalConfig = {
     managersLog: true,
     brandSanitation: true,
     memberSolutionsBilling: true,  // PMMA billing management dashboard
+    stripePayments: true,  // Stripe dashboard for CC payments
 
     // Flagship Tools
     brandBookCreator: true,
