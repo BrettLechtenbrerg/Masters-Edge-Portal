@@ -32,6 +32,9 @@ import {
   Calculator,
   Lock,
   LogOut,
+  GraduationCap,
+  Settings,
+  MonitorSmartphone,
 } from "lucide-react";
 import { portalConfig } from "../portal.config";
 
@@ -43,9 +46,22 @@ interface AppCard {
   gradient: string;
   iconBg: string;
   status: "live" | "coming-soon" | "in-development";
-  tier: "flagship" | "daily-ops" | "tier3" | "advisor";
-  configKey: keyof typeof portalConfig.apps;
+  tier: "flagship" | "daily-ops" | "tier3" | "advisor" | "website";
+  configKey?: keyof typeof portalConfig.apps;
 }
+
+// Icon map for custom apps
+const iconMap: Record<string, React.ElementType> = {
+  Globe,
+  Settings,
+  GraduationCap,
+  Users,
+  MonitorSmartphone,
+  Palette,
+  DollarSign,
+  FileText,
+  Zap,
+};
 
 const allApps: AppCard[] = [
   // Daily Operations Apps
@@ -319,7 +335,22 @@ const allApps: AppCard[] = [
 ];
 
 // Filter apps based on portal config
-const apps = allApps.filter((app) => portalConfig.apps[app.configKey] !== false);
+const apps = allApps.filter((app) => app.configKey && portalConfig.apps[app.configKey] !== false);
+
+// Convert custom apps from config to AppCard format
+const customApps: AppCard[] = portalConfig.customApps.map((customApp) => ({
+  name: customApp.name,
+  description: customApp.description,
+  icon: iconMap[customApp.iconName] || Globe,
+  url: customApp.url,
+  gradient: customApp.gradient,
+  iconBg: customApp.iconBg,
+  status: customApp.status as "live" | "coming-soon" | "in-development",
+  tier: customApp.tier as "flagship" | "daily-ops" | "tier3" | "advisor" | "website",
+}));
+
+// Website & Community apps
+const websiteApps = customApps.filter((a) => a.tier === "website");
 
 function AppCardComponent({ app }: { app: AppCard }) {
   const isLive = app.status === "live";
@@ -415,10 +446,10 @@ function LoginScreen({ onLogin }: { onLogin: () => void }) {
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4">
-      {/* Background glow */}
+      {/* Background glow - PMMA Cranberry */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-blue-600/15 rounded-full blur-[120px] glow-pulse" />
-        <div className="absolute top-0 right-0 w-[400px] h-[300px] bg-indigo-600/10 rounded-full blur-[100px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#9B1B30]/15 rounded-full blur-[120px] glow-pulse" />
+        <div className="absolute top-0 right-0 w-[400px] h-[300px] bg-[#D4AF37]/10 rounded-full blur-[100px]" />
       </div>
 
       <div className="relative w-full max-w-md">
@@ -431,14 +462,16 @@ function LoginScreen({ onLogin }: { onLogin: () => void }) {
             {/* Logo & Title */}
             <div className="text-center mb-8">
               <div className="flex justify-center mb-4">
-                <Image
-                  src={portalConfig.logoPath}
-                  alt={portalConfig.logoAlt}
-                  width={80}
-                  height={77}
-                  className="drop-shadow-[0_0_20px_rgba(59,111,219,0.3)]"
-                  priority
-                />
+                <div className="bg-white rounded-xl p-3">
+                  <Image
+                    src={portalConfig.logoPath}
+                    alt={portalConfig.logoAlt}
+                    width={80}
+                    height={77}
+                    className="drop-shadow-[0_0_20px_rgba(155,27,48,0.3)]"
+                    priority
+                  />
+                </div>
               </div>
               <h1 className="text-2xl font-bold text-white mb-2">
                 {portalConfig.portalTitle}
@@ -492,7 +525,7 @@ function LoginScreen({ onLogin }: { onLogin: () => void }) {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold hover:from-blue-500 hover:to-indigo-500 focus:outline-none focus:ring-2 focus:ring-blue-500/50 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2"
+                className="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-[#9B1B30] to-[#B42040] text-white font-semibold hover:from-[#B42040] hover:to-[#9B1B30] focus:outline-none focus:ring-2 focus:ring-[#9B1B30]/50 disabled:opacity-50 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2"
               >
                 {isLoading ? (
                   <>
@@ -565,14 +598,13 @@ export default function PortalPage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <header className="relative overflow-hidden border-b border-white/10">
-        {/* Background glow */}
+        {/* Background glow - PMMA Cranberry */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-blue-600/15 rounded-full blur-[120px] glow-pulse" />
-          <div className="absolute top-0 right-0 w-[400px] h-[300px] bg-indigo-600/10 rounded-full blur-[100px]" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#9B1B30]/20 rounded-full blur-[120px] glow-pulse" />
+          <div className="absolute top-0 right-0 w-[400px] h-[300px] bg-[#D4AF37]/10 rounded-full blur-[100px]" />
         </div>
 
         <div className="relative max-w-7xl mx-auto px-6 py-16 sm:py-20 text-center">
-          {/* TSAI Badge */}
           {/* Logout Button - Top Right */}
           <div className="absolute top-4 right-4 sm:top-6 sm:right-6">
             <button
@@ -584,10 +616,11 @@ export default function PortalPage() {
             </button>
           </div>
 
+          {/* Powered by TSAI Badge */}
           <div className="inline-flex items-center gap-3 rounded-full bg-white/5 border border-white/10 px-5 py-2.5 mb-8 backdrop-blur-sm">
             <Image
-              src={portalConfig.logoPath}
-              alt={portalConfig.logoAlt}
+              src="/tsai-logo.png"
+              alt="Total Success AI"
               width={28}
               height={28}
               className="rounded-full"
@@ -597,23 +630,25 @@ export default function PortalPage() {
             </span>
           </div>
 
-          {/* Logo */}
+          {/* PMMA Logo */}
           <div className="flex justify-center mb-6">
-            <Image
-              src={portalConfig.logoPath}
-              alt={portalConfig.logoAlt}
-              width={120}
-              height={115}
-              className="drop-shadow-[0_0_30px_rgba(59,111,219,0.3)]"
-              priority
-            />
+            <div className="bg-white rounded-2xl p-4 shadow-xl">
+              <Image
+                src={portalConfig.logoPath}
+                alt={portalConfig.logoAlt}
+                width={120}
+                height={115}
+                className="drop-shadow-[0_0_30px_rgba(155,27,48,0.3)]"
+                priority
+              />
+            </div>
           </div>
 
           {/* Title */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-4">
             <span className="text-white">{portalConfig.businessName}</span>
             <br />
-            <span className="bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#9B1B30] via-[#B42040] to-[#D4AF37] bg-clip-text text-transparent">
               Power Portal
             </span>
           </h1>
@@ -628,6 +663,29 @@ export default function PortalPage() {
       </header>
 
       <main className="max-w-7xl mx-auto px-6 py-12">
+        {/* Website & Community Section - PMMA Digital Hub */}
+        {websiteApps.length > 0 && (
+          <section className="mb-16">
+            <div className="flex items-center gap-3 mb-8">
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-[#9B1B30] to-[#D4AF37]">
+                <MonitorSmartphone className="h-5 w-5 text-white" />
+              </div>
+              <div>
+                <h2 className="text-2xl font-bold text-white">Website & Community</h2>
+                <p className="text-sm text-navy-400">
+                  Your PMMA digital hub — website, admin tools, student portal, and member community
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {websiteApps.map((app) => (
+                <AppCardComponent key={app.name} app={app} />
+              ))}
+            </div>
+          </section>
+        )}
+
         {/* Daily Operations Section */}
         <section className="mb-16">
           <div className="flex items-center gap-3 mb-8">
@@ -717,16 +775,30 @@ export default function PortalPage() {
       <footer className="border-t border-white/10 bg-navy-950/50">
         <div className="max-w-7xl mx-auto px-6 py-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-3">
-              <Image
-                src={portalConfig.logoPath}
-                alt={portalConfig.logoAlt}
-                width={36}
-                height={34}
-                className="rounded-md"
-              />
-              <div>
-                <p className="text-sm font-semibold text-white">{portalConfig.footerCompany}</p>
+            <div className="flex items-center gap-6">
+              {/* PMMA Logo */}
+              <div className="flex items-center gap-3">
+                <div className="bg-white rounded-lg p-1">
+                  <Image
+                    src={portalConfig.logoPath}
+                    alt={portalConfig.logoAlt}
+                    width={36}
+                    height={34}
+                  />
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-white">{portalConfig.footerCompany}</p>
+                </div>
+              </div>
+              {/* TSAI Powered By */}
+              <div className="flex items-center gap-2 pl-6 border-l border-white/10">
+                <Image
+                  src="/tsai-logo.png"
+                  alt="Total Success AI"
+                  width={24}
+                  height={24}
+                  className="rounded"
+                />
                 <p className="text-xs text-navy-400">
                   {portalConfig.footerTagline}
                 </p>
