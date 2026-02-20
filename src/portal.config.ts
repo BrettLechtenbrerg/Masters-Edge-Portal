@@ -123,8 +123,8 @@ export const portalConfig = {
       tier: "website",
     },
     {
-      name: "GHL Community",
-      description: "Access your Go High Level member community. Training videos, curriculum guides, and student forum.",
+      name: "PMMA Student Community",
+      description: "Access the student community for training videos, curriculum guides, and connect with fellow martial artists.",
       iconName: "Users",
       url: "https://members.personalmasterymartialarts.com/communities/groups/black-belts/home",
       gradient: "from-emerald-600 to-teal-600",
