@@ -35,6 +35,7 @@ import {
   GraduationCap,
   Settings,
   MonitorSmartphone,
+  CreditCard,
 } from "lucide-react";
 import { portalConfig } from "../portal.config";
 
@@ -160,6 +161,18 @@ const allApps: AppCard[] = [
     status: "live",
     tier: "daily-ops",
     configKey: "brandSanitation",
+  },
+  {
+    name: "Member Solutions Billing",
+    description:
+      "Access your billing management dashboard. Enter student contracts, manage payment information, and track membership billing.",
+    icon: CreditCard,
+    url: "#", // URL to be added
+    gradient: "from-green-600 to-emerald-600",
+    iconBg: "bg-green-500/20",
+    status: "coming-soon",
+    tier: "daily-ops",
+    configKey: "memberSolutionsBilling",
   },
   // Tier 2 Flagship Companion Apps (Build Series)
   {

@@ -65,6 +65,7 @@ export const portalConfig = {
     bonusCalculator: true,
     managersLog: true,
     brandSanitation: true,
+    memberSolutionsBilling: true,  // PMMA billing management dashboard
 
     // Flagship Tools
     brandBookCreator: true,
